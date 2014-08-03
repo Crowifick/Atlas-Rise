@@ -23,7 +23,7 @@ public class ARRecipes {
         GameRegistry.addShapedRecipe(new ItemStack(ARBlocks.clorite, 1), "CCC", "CCC", "CCC", 'C', ARItems.cloriteIngot);
         GameRegistry.addShapedRecipe(new ItemStack(ARItems.cloritePickaxe, 1), "CCC", " I ", " I ", 'C', ARItems.cloriteIngot, 'I', Items.stick);
         GameRegistry.addShapedRecipe(new ItemStack(ARItems.cloriteSword, 1), " C ", " C ", " I ", 'C', ARItems.cloriteIngot, 'I', Items.stick);
-        GameRegistry.addShapedRecipe(new ItemStack(ARItems.cloriteAxe, 1), "CC", "CI ", " I ", 'C', ARItems.cloriteIngot, 'I', Items.stick);
+        GameRegistry.addShapedRecipe(new ItemStack(ARItems.cloriteAxe, 1), "CC ", "CI ", " I ", 'C', ARItems.cloriteIngot, 'I', Items.stick);
         GameRegistry.addShapedRecipe(new ItemStack(ARItems.cloriteShovel, 1), " C ", " I ", " I ", 'C', ARItems.cloriteIngot, 'I', Items.stick);
         GameRegistry.addShapedRecipe(new ItemStack(ARItems.cloriteHoe, 1), "CC ", " I ", " I ", 'C', ARItems.cloriteIngot, 'I', Items.stick);
         GameRegistry.addShapelessRecipe(new ItemStack(ARItems.cloriteIngot, 9), ARBlocks.clorite);
