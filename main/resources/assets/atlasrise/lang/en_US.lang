@@ -1,6 +1,12 @@
 tile.CloriteOre.name=Clorite Ore
 tile.CloriteOre.name=Clorite
 item.CloriteIngot.name=Clorite Ingot
+item.CloritePlate.name=Clorite Plate
+item.CloritePickaxeHead.name=Clorite Pickaxe Head
+item.CloriteSwordHead.name=Clorite Sword Head
+item.CloriteAxeHead.name=Clorite Axe Head
+item.CloriteShovelHead.name=Clorite Shovel Head
+item.CloriteHoeHead.name=Clorite Hoe Head
 item.CloritePickaxe.name=Clorite Pickaxe
 item.CloriteSword.name=Clorite Sword
 item.CloriteAxe.name=Clorite Axe
