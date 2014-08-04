@@ -18,7 +18,7 @@ import net.minecraftforge.common.util.EnumHelper;
 @GameRegistry.ObjectHolder(Reference.MODID)
 public class ARItems {
 
-    public static Item.ToolMaterial clorite = EnumHelper.addToolMaterial("Clorite", 4, 500, 10.0F, 4.0F, 15);
+    public static Item.ToolMaterial clorite = EnumHelper.addToolMaterial("Clorite", 4, 500, 10.0F, 6.0F, 15);
     public static ItemArmor.ArmorMaterial cloriteArmor = EnumHelper.addArmorMaterial("Clorite", 43, new int[]{5, 10, 8, 6}, 12);
 
     public static ARItem cloriteIngot = new ARItem("CloriteIngot", 64, CreativeTabs.tabMaterials);
@@ -33,6 +33,10 @@ public class ARItems {
     public static ARAxe cloriteAxe = new ARAxe(clorite, "CloriteAxe");
     public static ARShovel cloriteShovel = new ARShovel(clorite, "CloriteShovel");
     public static ARHoe cloriteHoe = new ARHoe(clorite, "CloriteHoe");
+    public static ArmorClorite cloriteHelmet = new ArmorClorite(cloriteArmor, 0, 0, "CloriteHelmet");
+    public static ArmorClorite cloriteChestPlate = new ArmorClorite(cloriteArmor, 0, 1, "CloriteChestPlate");
+    public static ArmorClorite cloriteLeggings = new ArmorClorite(cloriteArmor, 0, 2, "CloriteLeggings");
+    public static ArmorClorite cloriteBoots = new ArmorClorite(cloriteArmor, 0, 3, "CloriteBoots");
 
     public static void init() {
 
@@ -48,6 +52,10 @@ public class ARItems {
         GameRegistry.registerItem(cloriteAxe, "CloriteAxe");
         GameRegistry.registerItem(cloriteShovel, "CloriteShovel");
         GameRegistry.registerItem(cloriteHoe, "CloriteHoe");
+        GameRegistry.registerItem(cloriteHelmet, "CloriteHelmet");
+        GameRegistry.registerItem(cloriteChestPlate, "CloriteChestPlate");
+        GameRegistry.registerItem(cloriteLeggings, "CloriteLeggings");
+        GameRegistry.registerItem(cloriteBoots, "CloriteBoots");
 
     }
 
