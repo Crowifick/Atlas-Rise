@@ -20,12 +20,17 @@ public class ARRecipes {
     public static void init() {
 
         GameRegistry.addSmelting(ARBlocks.cloriteOre, new ItemStack(ARItems.cloriteIngot, 1), 3F);
+        GameRegistry.addShapedRecipe(new ItemStack(ARItems.cloritePickaxeHead, 1), "CCC", "C C", 'C', ARItems.cloriteIngot);
+        GameRegistry.addShapedRecipe(new ItemStack(ARItems.cloriteShovelHead, 1), "C", "C", "C", 'C', ARItems.cloriteIngot);
+        GameRegistry.addShapedRecipe(new ItemStack(ARItems.cloriteAxeHead, 1), "CCC", "CC ", 'C', ARItems.cloriteIngot);
+        GameRegistry.addShapedRecipe(new ItemStack(ARItems.cloriteShovelHead, 1), "CCC", "CCC", "C C", 'C', ARItems.cloriteIngot);
+        GameRegistry.addShapedRecipe(new ItemStack(ARItems.cloriteHoeHead, 1), "CCC", " CC", 'C', ARItems.cloriteIngot);
+        GameRegistry.addShapedRecipe(new ItemStack(ARItems.cloritePickaxe, 1), "C", "I", 'C', ARItems.cloritePickaxeHead, 'I', Items.stick);
+        GameRegistry.addShapedRecipe(new ItemStack(ARItems.cloriteSword, 1), "C", "I", 'C', ARItems.cloriteSwordHead, 'I', Items.stick);
+        GameRegistry.addShapedRecipe(new ItemStack(ARItems.cloriteAxe, 1), "C", "I", 'C', ARItems.cloriteAxeHead, 'I', Items.stick);
+        GameRegistry.addShapedRecipe(new ItemStack(ARItems.cloriteShovel, 1), "C", "I", 'C', ARItems.cloriteShovelHead, 'I', Items.stick);
+        GameRegistry.addShapedRecipe(new ItemStack(ARItems.cloriteHoe, 1), "C", "I", 'C', ARItems.cloriteHoeHead, 'I', Items.stick);
         GameRegistry.addShapedRecipe(new ItemStack(ARBlocks.clorite, 1), "CCC", "CCC", "CCC", 'C', ARItems.cloriteIngot);
-        GameRegistry.addShapedRecipe(new ItemStack(ARItems.cloritePickaxe, 1), "CCC", " I ", " I ", 'C', ARItems.cloriteIngot, 'I', Items.stick);
-        GameRegistry.addShapedRecipe(new ItemStack(ARItems.cloriteSword, 1), " C ", " C ", " I ", 'C', ARItems.cloriteIngot, 'I', Items.stick);
-        GameRegistry.addShapedRecipe(new ItemStack(ARItems.cloriteAxe, 1), "CC ", "CI ", " I ", 'C', ARItems.cloriteIngot, 'I', Items.stick);
-        GameRegistry.addShapedRecipe(new ItemStack(ARItems.cloriteShovel, 1), " C ", " I ", " I ", 'C', ARItems.cloriteIngot, 'I', Items.stick);
-        GameRegistry.addShapedRecipe(new ItemStack(ARItems.cloriteHoe, 1), "CC ", " I ", " I ", 'C', ARItems.cloriteIngot, 'I', Items.stick);
         GameRegistry.addShapelessRecipe(new ItemStack(ARItems.cloriteIngot, 9), ARBlocks.clorite);
 
     }
