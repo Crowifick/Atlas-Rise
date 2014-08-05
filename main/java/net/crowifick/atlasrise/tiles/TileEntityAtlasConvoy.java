@@ -1,18 +1,22 @@
 package net.crowifick.atlasrise.tiles;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.crowifick.atlasrise.blocks.ARBlocks;
+import net.crowifick.atlasrise.blocks.AtlasConvoy;
 import net.crowifick.atlasrise.items.ARItems;
 import net.crowifick.atlasrise.recipes.AtlasConvoyRecipes;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockFurnace;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
-import net.minecraft.item.*;
-import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 
 /**
@@ -119,74 +123,169 @@ public class TileEntityAtlasConvoy extends TileEntity implements ISidedInventory
 
     }
 
+    public void readFromNBT(NBTTagCompound nbtTagCompound) {
+
+        super.readFromNBT(nbtTagCompound);
+
+        NBTTagList nbttaglist = nbtTagCompound.getTagList("Items", 10);
+        atlasConvoyItemStacks = new ItemStack[this.getSizeInventory()];
+
+        for (int i = 0; i < nbttaglist.tagCount(); ++i) {
+
+            NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
+            byte b0 = nbttagcompound1.getByte("Slot");
+
+            if (b0 >= 0 && b0 < atlasConvoyItemStacks.length) {
+
+                atlasConvoyItemStacks[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
+
+            }
+
+        }
+
+        atlasConvoyBurnTime = nbtTagCompound.getShort("BurnTime");
+        atlasConvoyCookTime = nbtTagCompound.getShort("CookTime");
+
+        this.currentItemBurnTime = getItemBurnTime(atlasConvoyItemStacks[1]);
+
+        if (nbtTagCompound.hasKey("CustomName", 8)) {
+
+            this.inventoryName = nbtTagCompound.getString("CustomName");
+
+        }
+
+    }
+
+    public void writeToNBT(NBTTagCompound nbtTagCompound)
+    {
+        super.writeToNBT(nbtTagCompound);
+
+        nbtTagCompound.setShort("BurnTime", (short)atlasConvoyBurnTime);
+        nbtTagCompound.setShort("CookTime", (short)atlasConvoyCookTime);
+        NBTTagList nbttaglist = new NBTTagList();
+
+        for (int i = 0; i < atlasConvoyItemStacks.length; ++i) {
+
+            if (this.atlasConvoyItemStacks[i] != null) {
+
+                NBTTagCompound nbttagcompound1 = new NBTTagCompound();
+                nbttagcompound1.setByte("Slot", (byte)i);
+
+                this.atlasConvoyItemStacks[i].writeToNBT(nbttagcompound1);
+                nbttaglist.appendTag(nbttagcompound1);
+
+            }
+
+        }
+
+        nbtTagCompound.setTag("Items", nbttaglist);
+
+        if (this.hasCustomInventoryName()) {
+
+            nbtTagCompound.setString("CustomName", inventoryName);
+
+        }
+
+    }
+
+    @SideOnly(Side.CLIENT)
+    public int getCookProgressScaled(int par1) {
+
+        return atlasConvoyCookTime * par1 / 450;
+
+    }
+
+    @SideOnly(Side.CLIENT)
+    public int getBurnTimeRemainingScaled(int par1) {
+
+        if (this.currentItemBurnTime == 0) {
+
+            this.currentItemBurnTime = 200;
+
+        }
+
+        return atlasConvoyBurnTime * par1 / this.currentItemBurnTime;
+
+    }
+
     public boolean isBurning() {
 
         return atlasConvoyBurnTime > 0;
 
     }
 
-    public void updateEntity()
-    {
-        boolean flag = this.furnaceBurnTime > 0;
+    public void updateEntity() {
+
+        boolean flag = atlasConvoyBurnTime > 0;
         boolean flag1 = false;
 
-        if (this.furnaceBurnTime > 0)
-        {
-            --this.furnaceBurnTime;
+        if (atlasConvoyBurnTime > 0) {
+
+            --atlasConvoyBurnTime;
+
         }
 
-        if (!this.worldObj.isRemote)
-        {
-            if (this.furnaceBurnTime != 0 || this.furnaceItemStacks[1] != null && this.furnaceItemStacks[0] != null)
-            {
-                if (this.furnaceBurnTime == 0 && this.canSmelt())
-                {
-                    this.currentItemBurnTime = this.furnaceBurnTime = getItemBurnTime(this.furnaceItemStacks[1]);
+        if (!this.worldObj.isRemote) {
 
-                    if (this.furnaceBurnTime > 0)
-                    {
+            if (atlasConvoyBurnTime != 0 || atlasConvoyItemStacks[1] != null && atlasConvoyItemStacks[0] != null) {
+
+                if (atlasConvoyBurnTime == 0 && this.canSmelt()) {
+
+                    this.currentItemBurnTime = atlasConvoyBurnTime = getItemBurnTime(atlasConvoyItemStacks[1]);
+
+                    if (atlasConvoyBurnTime > 0) {
+
                         flag1 = true;
 
-                        if (this.furnaceItemStacks[1] != null)
-                        {
-                            --this.furnaceItemStacks[1].stackSize;
+                        if (atlasConvoyItemStacks[1] != null) {
 
-                            if (this.furnaceItemStacks[1].stackSize == 0)
-                            {
-                                this.furnaceItemStacks[1] = furnaceItemStacks[1].getItem().getContainerItem(furnaceItemStacks[1]);
+                            --atlasConvoyItemStacks[1].stackSize;
+
+                            if (atlasConvoyItemStacks[1].stackSize == 0) {
+
+                                atlasConvoyItemStacks[1] = atlasConvoyItemStacks[1].getItem().getContainerItem(atlasConvoyItemStacks[1]);
+
                             }
+
                         }
+
                     }
+
                 }
 
-                if (this.isBurning() && this.canSmelt())
-                {
-                    ++this.furnaceCookTime;
+                if (this.isBurning() && this.canSmelt()) {
 
-                    if (this.furnaceCookTime == 200)
-                    {
-                        this.furnaceCookTime = 0;
+                    ++atlasConvoyCookTime;
+
+                    if (atlasConvoyCookTime == 200) {
+
+                        atlasConvoyCookTime = 0;
                         this.smeltItem();
                         flag1 = true;
                     }
+
+                } else {
+
+                    atlasConvoyCookTime = 0;
                 }
-                else
-                {
-                    this.furnaceCookTime = 0;
-                }
+
             }
 
-            if (flag != this.furnaceBurnTime > 0)
-            {
+            if (flag != atlasConvoyBurnTime > 0) {
+
                 flag1 = true;
-                BlockFurnace.updateFurnaceBlockState(this.furnaceBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+                AtlasConvoy.updateFurnaceBlockState(atlasConvoyBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+
             }
+
         }
 
-        if (flag1)
-        {
+        if (flag1) {
+
             this.markDirty();
+
         }
+
     }
 
     @Override
@@ -236,7 +335,7 @@ public class TileEntityAtlasConvoy extends TileEntity implements ISidedInventory
 
     }
 
-    private boolean isItemFuel(ItemStack itemStack) {
+    public static boolean isItemFuel(ItemStack itemStack) {
 
         return getItemBurnTime(itemStack) > 0;
 
@@ -250,11 +349,16 @@ public class TileEntityAtlasConvoy extends TileEntity implements ISidedInventory
 
         } else {
 
-            ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(atlasConvoyItemStacks[0]);
+            ItemStack itemstack = AtlasConvoyRecipes.smelting().getSmeltingResult(atlasConvoyItemStacks[0]);
+
             if (itemstack == null) return false;
+
             if (atlasConvoyItemStacks[2] == null) return true;
+
             if (!atlasConvoyItemStacks[2].isItemEqual(itemstack)) return false;
+
             int result = atlasConvoyItemStacks[2].stackSize + itemstack.stackSize;
+
             return result <= getInventoryStackLimit() && result <= atlasConvoyItemStacks[2].getMaxStackSize();
 
         }
@@ -262,31 +366,35 @@ public class TileEntityAtlasConvoy extends TileEntity implements ISidedInventory
     }
 
 
-    public void smeltItem()
-    {
-        if (this.canSmelt())
-        {
+    public void smeltItem() {
+
+        if (this.canSmelt()) {
+
             ItemStack itemstack = AtlasConvoyRecipes.smelting().getSmeltingResult(atlasConvoyItemStacks[0]);
 
-            if (atlasConvoyItemStacks[2] == null)
-            {
+            if (atlasConvoyItemStacks[2] == null) {
+
                 atlasConvoyItemStacks[2] = itemstack.copy();
-            }
-            else if (atlasConvoyItemStacks[2].getItem() == itemstack.getItem())
-            {
+
+            } else if (atlasConvoyItemStacks[2].getItem() == itemstack.getItem()) {
+
                 this.atlasConvoyItemStacks[2].stackSize += itemstack.stackSize;
+
             }
 
             --atlasConvoyItemStacks[0].stackSize;
 
-            if (atlasConvoyItemStacks[0].stackSize <= 0)
-            {
+            if (atlasConvoyItemStacks[0].stackSize <= 0) {
+
                 atlasConvoyItemStacks[0] = null;
+
             }
+
         }
+
     }
 
-    private int getItemBurnTime(ItemStack itemStack) {
+    private static int getItemBurnTime(ItemStack itemStack) {
 
         if (itemStack == null) {
 
@@ -313,6 +421,27 @@ public class TileEntityAtlasConvoy extends TileEntity implements ISidedInventory
             return GameRegistry.getFuelValue(itemStack);
 
         }
+
+    }
+
+    @Override
+    public int[] getAccessibleSlotsFromSide(int par1) {
+
+        return par1 == 0 ? slotsBottom : (par1 == 1 ? slotsTop : slotsSides);
+
+    }
+
+    @Override
+    public boolean canInsertItem(int par1, ItemStack itemStack, int par3) {
+
+        return this.isItemValidForSlot(par1, itemStack);
+
+    }
+
+    @Override
+    public boolean canExtractItem(int par1, ItemStack itemStack, int par3) {
+
+        return par3 != 0 || par1 != 1 || itemStack.getItem() == Items.bucket;
 
     }
 

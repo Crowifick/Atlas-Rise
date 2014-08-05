@@ -1,6 +1,7 @@
 package net.crowifick.atlasrise.blocks;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.crowifick.atlasrise.tiles.TileEntityAtlasConvoy;
 import net.crowifick.atlasrise.utils.Reference;
 import net.crowifick.atlasrise.utils.blocks.ARBlock;
 import net.minecraft.block.Block;
@@ -30,6 +31,8 @@ public class ARBlocks {
 
         GameRegistry.registerBlock(atlasConvoyInActive, "AtlasConvoyInActive");
         GameRegistry.registerBlock(atlasConvoyActive, "AtlasConvoyActive");
+
+        GameRegistry.registerTileEntity(TileEntityAtlasConvoy.class, "TileAtlasConvoy");
 
     }
 

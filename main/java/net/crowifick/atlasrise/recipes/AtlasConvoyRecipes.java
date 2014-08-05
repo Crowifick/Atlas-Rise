@@ -1,5 +1,6 @@
 package net.crowifick.atlasrise.recipes;
 
+import net.crowifick.atlasrise.items.ARItems;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -22,83 +23,95 @@ public class AtlasConvoyRecipes {
     private Map smeltingList = new HashMap();
     private Map experienceList = new HashMap();
 
-    /**
-     * Used to call methods addSmelting and getSmeltingResult.
-     */
-    public static AtlasConvoyRecipes smelting()
-    {
+    public static AtlasConvoyRecipes smelting() {
+
         return smeltingBase;
+
     }
 
-    private AtlasConvoyRecipes(){}
+    private AtlasConvoyRecipes(){
 
-    public void addAtlasConvoyRecipe(Block p_151393_1_, ItemStack p_151393_2_, float p_151393_3_)
-    {
-        this.addAtlasConvoyRecipe(Item.getItemFromBlock(p_151393_1_), p_151393_2_, p_151393_3_);
+        addAtlasConvoyRecipe(ARItems.cloriteIngot, new ItemStack(ARItems.cloritePlate, 1), 1.0F);
+
     }
 
-    public void addAtlasConvoyRecipe(Item p_151396_1_, ItemStack p_151396_2_, float p_151396_3_)
-    {
-        this.addAtlasConvoyRecipe(new ItemStack(p_151396_1_, 1, 32767), p_151396_2_, p_151396_3_);
+    public void addAtlasConvoyRecipe(Block block, ItemStack itemStack, float par3) {
+
+        this.addAtlasConvoyRecipe(Item.getItemFromBlock(block), itemStack, par3);
+
     }
 
-    public void addAtlasConvoyRecipe(ItemStack p_151394_1_, ItemStack p_151394_2_, float p_151394_3_)
-    {
-        this.smeltingList.put(p_151394_1_, p_151394_2_);
-        this.experienceList.put(p_151394_2_, Float.valueOf(p_151394_3_));
+    public void addAtlasConvoyRecipe(Item item, ItemStack itemStack, float par3) {
+
+        this.addAtlasConvoyRecipe(new ItemStack(item, 1, 32767), itemStack, par3);
+
     }
 
-    /**
-     * Returns the smelting result of an item.
-     */
-    public ItemStack getSmeltingResult(ItemStack p_151395_1_)
-    {
+    public void addAtlasConvoyRecipe(ItemStack itemStack, ItemStack itemStack2, float par3) {
+
+        this.smeltingList.put(itemStack, itemStack2);
+        this.experienceList.put(itemStack2, Float.valueOf(par3));
+
+    }
+
+    public ItemStack getSmeltingResult(ItemStack itemStack) {
+
         Iterator iterator = this.smeltingList.entrySet().iterator();
         Map.Entry entry;
 
-        do
-        {
+        do {
+
             if (!iterator.hasNext())
-            {
                 return null;
-            }
 
             entry = (Map.Entry)iterator.next();
+
         }
-        while (!this.func_151397_a(p_151395_1_, (ItemStack)entry.getKey()));
+        while (!this.func_151397_a(itemStack, (ItemStack)entry.getKey()));
 
         return (ItemStack)entry.getValue();
+
     }
 
-    private boolean func_151397_a(ItemStack p_151397_1_, ItemStack p_151397_2_)
-    {
-        return p_151397_2_.getItem() == p_151397_1_.getItem() && (p_151397_2_.getItemDamage() == 32767 || p_151397_2_.getItemDamage() == p_151397_1_.getItemDamage());
+    private boolean func_151397_a(ItemStack itemStack, ItemStack itemStack2) {
+
+        return itemStack2.getItem() == itemStack.getItem() && (itemStack2.getItemDamage() == 32767 || itemStack2.getItemDamage() == itemStack.getItemDamage());
+
     }
 
-    public Map getSmeltingList()
-    {
+    public Map getSmeltingList() {
+
         return this.smeltingList;
+
     }
 
-    public float func_151398_b(ItemStack p_151398_1_)
-    {
-        float ret = p_151398_1_.getItem().getSmeltingExperience(p_151398_1_);
-        if (ret != -1) return ret;
+    public float func_151398_b(ItemStack itemStack) {
+
+        float ret = itemStack.getItem().getSmeltingExperience(itemStack);
+
+        if (ret != -1)
+            return ret;
 
         Iterator iterator = this.experienceList.entrySet().iterator();
+
         Map.Entry entry;
 
-        do
-        {
-            if (!iterator.hasNext())
-            {
+        do {
+
+            if (!iterator.hasNext()) {
+
                 return 0.0F;
+
             }
 
             entry = (Map.Entry)iterator.next();
+
         }
-        while (!this.func_151397_a(p_151398_1_, (ItemStack)entry.getKey()));
+
+        while (!this.func_151397_a(itemStack, (ItemStack)entry.getKey()));
 
         return ((Float)entry.getValue()).floatValue();
+
     }
+
 }

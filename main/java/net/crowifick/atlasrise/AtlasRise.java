@@ -5,7 +5,9 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import net.crowifick.atlasrise.blocks.ARBlocks;
+import net.crowifick.atlasrise.client.utils.GuiHandler;
 import net.crowifick.atlasrise.entitys.AREntitys;
 import net.crowifick.atlasrise.items.ARItems;
 import net.crowifick.atlasrise.proxys.CommonProxy;
@@ -30,7 +32,7 @@ public class AtlasRise {
     public static CommonProxy proxy;
 
     @Mod.EventHandler
-    public static void preInit(FMLPreInitializationEvent event) {
+    public void preInit(FMLPreInitializationEvent event) {
 
         ARBlocks.init();
         ARItems.init();
@@ -38,17 +40,19 @@ public class AtlasRise {
         ARRecipes.init();
         ARWorlds.init();
 
-    }
-
-    @Mod.EventHandler
-    public static void init(FMLInitializationEvent event) {
-
-
+        NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 
     }
 
     @Mod.EventHandler
-    public static void postInit(FMLPostInitializationEvent event) {
+    public void init(FMLInitializationEvent event) {
+
+
+
+    }
+
+    @Mod.EventHandler
+    public void postInit(FMLPostInitializationEvent event) {
 
 
 

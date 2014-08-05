@@ -9,6 +9,6 @@ package net.crowifick.atlasrise.utils;
  */
 public class GuiIDs {
 
-    public static final int atlasConvoy = 0;
+    public static final int atlasConvoy = 1;
 
 }

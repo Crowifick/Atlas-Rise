@@ -12,14 +12,12 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
@@ -115,16 +113,36 @@ public class AtlasConvoy extends BlockContainer {
 
             TileEntityAtlasConvoy tileEntityAtlasConvoy = (TileEntityAtlasConvoy)world.getTileEntity(x, y, z);
 
-            if (tileEntityAtlasConvoy != null) {
-
+            if (tileEntityAtlasConvoy != null)
                 player.openGui(AtlasRise.instance, GuiIDs.atlasConvoy, world, x, y, z);
-
-            }
 
             return true;
 
         }
 
+    }
+
+    public static void updateFurnaceBlockState(boolean par1, World world, int x, int y, int z)
+    {
+        int l = world.getBlockMetadata(x, y, z);
+        TileEntity tileentity = world.getTileEntity(x, y, z);
+
+        isActive = true;
+
+        if (par1)
+            world.setBlock(x, y, z, ARBlocks.atlasConvoyActive);
+        else
+            world.setBlock(x, y, z, ARBlocks.atlasConvoyInActive);
+
+
+        isActive = false;
+        world.setBlockMetadataWithNotify(x, y, z, l, 2);
+
+        if (tileentity != null)
+        {
+            tileentity.validate();
+            world.setTileEntity(x, y, z, tileentity);
+        }
     }
 
     public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityLivingBase, ItemStack itemStack)
