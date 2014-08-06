@@ -1,5 +1,5 @@
 tile.CloriteOre.name=Clorite Ore
-tile.CloriteOre.name=Clorite
+tile.CloriteBlock.name=Clorite Block
 item.CloriteIngot.name=Clorite Ingot
 item.CloritePlate.name=Clorite Plate
 item.CloritePickaxeHead.name=Clorite Pickaxe Head
@@ -16,3 +16,10 @@ item.CloriteHelmet.name=Clorite Helmet
 item.CloriteChestPlate.name=Clorite Chestplate
 item.CloriteLeggings.name=Clorite Leggings
 item.CloriteBoots.name=Clorite Boots
+
+tile.AtlasConvoy.name=Atlas Convoy
+container.atlasconvoy=Atlas Convoy
+
+tile.InsonumOre.name=Insonum Ore
+tile.InsonumBlock.name=Insonum Block
+item.Insonum.name=Insonum
