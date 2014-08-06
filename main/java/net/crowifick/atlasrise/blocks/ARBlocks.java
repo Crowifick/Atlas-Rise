@@ -19,7 +19,9 @@ import net.minecraft.creativetab.CreativeTabs;
 public class ARBlocks {
 
     public static ARBlock cloriteOre = (ARBlock) new ARBlock("CloriteOre", 3.2F, 10F, 2).setLightLevel(0.4F);
-    public static ARBlock clorite = new ARBlock(Material.iron, "Clorite", "pickaxe", 5.2F, 10F, 2, CreativeTabs.tabBlock);
+    public static ARBlock cloriteBlock = new ARBlock(Material.iron, "CloriteBlock", "pickaxe", 5.2F, 10F, 2, CreativeTabs.tabBlock);
+    public static ARBlock insonumOre = (ARBlock) new ARBlock("InsonumOre", 3.5F, 10F, 4).setLightLevel(0.5F);
+    public static ARBlock insonumBlock = new ARBlock(Material.iron, "InsonumBlock", "pickaxe", 5.5F, 10F, 4, CreativeTabs.tabBlock);
 
     public static Block atlasConvoyInActive = new AtlasConvoy(false).setCreativeTab(CreativeTabs.tabDecorations);
     public static Block atlasConvoyActive = new AtlasConvoy(true);
@@ -27,7 +29,9 @@ public class ARBlocks {
     public static void init() {
 
         GameRegistry.registerBlock(cloriteOre, "CloriteOre");
-        GameRegistry.registerBlock(clorite, "Clorite");
+        GameRegistry.registerBlock(cloriteBlock, "CloriteBlock");
+        GameRegistry.registerBlock(insonumOre, "InsonumOre");
+        GameRegistry.registerBlock(insonumBlock, "InsonumBlock");
 
         GameRegistry.registerBlock(atlasConvoyInActive, "AtlasConvoyInActive");
         GameRegistry.registerBlock(atlasConvoyActive, "AtlasConvoyActive");

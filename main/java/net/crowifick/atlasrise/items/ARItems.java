@@ -38,6 +38,8 @@ public class ARItems {
     public static ArmorClorite cloriteLeggings = new ArmorClorite(cloriteArmor, 0, 2, "CloriteLeggings");
     public static ArmorClorite cloriteBoots = new ArmorClorite(cloriteArmor, 0, 3, "CloriteBoots");
 
+    public static ARItem insonum = new ARItem("Insonum", 64, CreativeTabs.tabMaterials);
+
     public static void init() {
 
         GameRegistry.registerItem(cloriteIngot, "CloriteIngot");
@@ -56,6 +58,8 @@ public class ARItems {
         GameRegistry.registerItem(cloriteChestPlate, "CloriteChestPlate");
         GameRegistry.registerItem(cloriteLeggings, "CloriteLeggings");
         GameRegistry.registerItem(cloriteBoots, "CloriteBoots");
+
+        GameRegistry.registerItem(insonum, "Insonum");
 
     }
 

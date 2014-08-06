@@ -30,8 +30,8 @@ public class ARRecipes {
 
     private static void regularRecipes() {
 
-        GameRegistry.addShapedRecipe(new ItemStack(ARBlocks.clorite, 1), "CCC", "CCC", "CCC", 'C', ARItems.cloriteIngot);
-        GameRegistry.addShapelessRecipe(new ItemStack(ARItems.cloriteIngot, 9), ARBlocks.clorite);
+        GameRegistry.addShapedRecipe(new ItemStack(ARBlocks.cloriteBlock, 1), "CCC", "CCC", "CCC", 'C', ARItems.cloriteIngot);
+        GameRegistry.addShapelessRecipe(new ItemStack(ARItems.cloriteIngot, 9), ARBlocks.cloriteBlock);
 
 
     }

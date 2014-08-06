@@ -1,9 +1,14 @@
 package net.crowifick.atlasrise.utils.blocks;
 
+import net.crowifick.atlasrise.blocks.ARBlocks;
+import net.crowifick.atlasrise.items.ARItems;
 import net.crowifick.atlasrise.utils.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+
+import java.util.Random;
 
 /**
  * User: Crowifick
@@ -77,5 +82,22 @@ public class ARBlock extends Block {
 
     }
 
+    public int quantityDropped(Random random) {
+
+        if (this.equals(ARBlocks.insonumOre))
+            return 1 + random.nextInt(2);
+
+        return 1;
+
+    }
+
+    public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
+
+        if (this.equals(ARBlocks.insonumOre))
+            return ARItems.insonum;
+
+        return Item.getItemFromBlock(this);
+
+    }
 
 }

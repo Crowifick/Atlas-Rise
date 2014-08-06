@@ -408,7 +408,7 @@ public class TileEntityAtlasConvoy extends TileEntity implements ISidedInventory
 
                 Block block = Block.getBlockFromItem(item);
 
-                if (block == ARBlocks.clorite) {
+                if (block == ARBlocks.insonumBlock) {
 
                     return 16000;
 
@@ -416,7 +416,7 @@ public class TileEntityAtlasConvoy extends TileEntity implements ISidedInventory
 
             }
 
-            if (item == ARItems.cloriteIngot) return 1600;
+            if (item == ARItems.insonum) return 1600;
 
             return GameRegistry.getFuelValue(itemStack);
 
