@@ -103,47 +103,83 @@ public class ContainerAtlasConvoy extends Container {
 
     public ItemStack transferStackInSlot(EntityPlayer player, int par2) {
 
-        ItemStack itemStack = null;
-
-        Slot slot = (Slot)inventorySlots.get(par2);
+        ItemStack itemstack = null;
+        Slot slot = (Slot)this.inventorySlots.get(par2);
 
         if (slot != null && slot.getHasStack()) {
 
-            ItemStack itemStack1 = slot.getStack();
-            itemStack = itemStack1.copy();
+            ItemStack itemstack1 = slot.getStack();
+            itemstack = itemstack1.copy();
 
-            if (par2 == 2)
-                if (!mergeItemStack(itemStack1, 3, 39, true))
-                    return  null;
+            if (par2 == 2) {
 
-            else if (par2 != 1 && par2 != 0)
-                    if (AtlasConvoyRecipes.smelting().getSmeltingResult(itemStack1) != null)
-                        if (!mergeItemStack(itemStack1, 0, 1, false))
-                            return  null;
-            else if (TileEntityAtlasConvoy.isItemFuel(itemStack1))
-                            if (!mergeItemStack(itemStack1, 1, 2, false))
-                                return null;
-            else if (par2 >= 3 && par2 < 30)
-                                if (!mergeItemStack(itemStack1, 30, 39, false))
-                                    return null;
-            else if (par2 >= 30 && par2 < 39 && mergeItemStack(itemStack1, 3, 30, false))
-                                    return  null;
-            else if (mergeItemStack(itemStack1, 3, 39, false))
-                                    return null;
+                if (!this.mergeItemStack(itemstack1, 3, 39, true)) {
 
-            if (itemStack1.stackSize == 0)
-                slot.putStack((ItemStack)null);
-            else
-                slot.onSlotChanged();
+                    return null;
 
-            if (itemStack1.stackSize == itemStack.stackSize)
+                }
+
+                slot.onSlotChange(itemstack1, itemstack);
+
+            } else if (par2 != 1 && par2 != 0) {
+
+                if (AtlasConvoyRecipes.smelting().getSmeltingResult(itemstack1) != null) {
+
+                    if (!this.mergeItemStack(itemstack1, 0, 1, false)) {
+
+                        return null;
+
+                    }
+
+                } else if (TileEntityAtlasConvoy.isItemFuel(itemstack1)) {
+
+                    if (!this.mergeItemStack(itemstack1, 1, 2, false)) {
+
+                        return null;
+
+                    }
+                } else if (par2 >= 3 && par2 < 30) {
+
+                    if (!this.mergeItemStack(itemstack1, 30, 39, false)) {
+
+                        return null;
+
+                    }
+
+                }
+                else if (par2 >= 30 && par2 < 39 && !this.mergeItemStack(itemstack1, 3, 30, false)) {
+
+                    return null;
+
+                }
+
+            } else if (!this.mergeItemStack(itemstack1, 3, 39, false)) {
+
                 return null;
 
-            slot.onPickupFromSlot(player, itemStack1);
+            }
+
+            if (itemstack1.stackSize == 0) {
+
+                slot.putStack((ItemStack)null);
+
+            } else {
+
+                slot.onSlotChanged();
+
+            }
+
+            if (itemstack1.stackSize == itemstack.stackSize) {
+
+                return null;
+
+            }
+
+            slot.onPickupFromSlot(player, itemstack1);
 
         }
 
-        return itemStack;
+        return itemstack;
 
     }
 

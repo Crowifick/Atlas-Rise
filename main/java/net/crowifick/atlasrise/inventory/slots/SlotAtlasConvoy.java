@@ -47,7 +47,7 @@ public class SlotAtlasConvoy extends Slot {
     public void onPickupFromSlot(EntityPlayer player, ItemStack itemStack) {
 
         onCrafting(itemStack);
-        onPickupFromSlot(player, itemStack);
+        super.onPickupFromSlot(player, itemStack);
 
     }
 

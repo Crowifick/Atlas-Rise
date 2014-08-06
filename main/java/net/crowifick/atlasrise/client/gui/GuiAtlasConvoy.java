@@ -21,7 +21,7 @@ import org.lwjgl.opengl.GL11;
 @SideOnly(Side.CLIENT)
 public class GuiAtlasConvoy extends GuiContainer {
 
-    private static final ResourceLocation atlasConvoyTexture = new ResourceLocation(Reference.MODID + ":textures/gui/AtlasConvoy.png");
+    private static final ResourceLocation atlasConvoyTexture = new ResourceLocation(Reference.MODID + ":textures/gui/container/AtlasConvoy.png");
     private TileEntityAtlasConvoy tileAtlasConvoy;
 
     public GuiAtlasConvoy(InventoryPlayer player, TileEntityAtlasConvoy tileEntityAtlasConvoy) {
@@ -54,11 +54,11 @@ public class GuiAtlasConvoy extends GuiContainer {
 
         if (tileAtlasConvoy.isBurning()) {
 
-            int il = tileAtlasConvoy.getBurnTimeRemainingScaled(13);
-            drawTexturedModalRect(k + 56, l + 36 + 12 - il, 176, 12 - il, 14, il + l);
+            int i1 = tileAtlasConvoy.getBurnTimeRemainingScaled(13);
+            this.drawTexturedModalRect(k + 56, l + 36 + 12 - i1, 176, 12 - i1, 14, i1 + 1);
 
-            il = tileAtlasConvoy.getCookProgressScaled(24);
-            this.drawTexturedModalRect(k + 79, l + 34, 176, 14, il + 1, 16);
+            i1 = tileAtlasConvoy.getCookProgressScaled(24);
+            this.drawTexturedModalRect(k + 79, l + 34, 176, 14, i1 + 1, 16);
 
         }
 

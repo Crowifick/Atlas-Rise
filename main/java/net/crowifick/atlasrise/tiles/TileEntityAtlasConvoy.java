@@ -191,7 +191,7 @@ public class TileEntityAtlasConvoy extends TileEntity implements ISidedInventory
     @SideOnly(Side.CLIENT)
     public int getCookProgressScaled(int par1) {
 
-        return atlasConvoyCookTime * par1 / 450;
+        return atlasConvoyCookTime * par1 / 100;
 
     }
 
