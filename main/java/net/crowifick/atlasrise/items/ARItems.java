@@ -21,6 +21,7 @@ public class ARItems {
     public static Item.ToolMaterial clorite = EnumHelper.addToolMaterial("Clorite", 4, 500, 10.0F, 6.0F, 15);
     public static ItemArmor.ArmorMaterial cloriteArmor = EnumHelper.addArmorMaterial("Clorite", 43, new int[]{5, 10, 8, 6}, 12);
 
+    //Tier 0
     public static ARItem cloriteIngot = new ARItem("CloriteIngot", 64, CreativeTabs.tabMaterials);
     public static ARItem cloritePlate = new ARItem("CloritePlate", 64, CreativeTabs.tabMaterials);
     public static ARItem cloritePickaxeHead = new ARItem("CloritePickaxeHead", 1, CreativeTabs.tabMaterials);
@@ -38,7 +39,24 @@ public class ARItems {
     public static ArmorClorite cloriteLeggings = new ArmorClorite(cloriteArmor, 0, 2, "CloriteLeggings");
     public static ArmorClorite cloriteBoots = new ArmorClorite(cloriteArmor, 0, 3, "CloriteBoots");
 
+    //Tier 1
     public static ARItem insonum = new ARItem("Insonum", 64, CreativeTabs.tabMaterials);
+
+    public static ARItem redocoleMix = new ARItem("RedocoleMix", 64, CreativeTabs.tabMaterials);
+    public static ARItem redocolePlate = new ARItem("RedocolePlate", 64, CreativeTabs.tabMaterials);
+    public static ARItem redocoleIngot = new ARItem("RedocoleIngot", 64, CreativeTabs.tabMaterials);
+    //TODO add redocole Armor and tools
+
+    public static ARItem IanOrb = new ARItem("IanOrb", 64, CreativeTabs.tabMaterials);
+
+    public static ARItem colaxMix = new ARItem("ColaxMix", 64, CreativeTabs.tabMaterials);
+    public static ARItem colax = new ARItem("Colax", 64, CreativeTabs.tabMaterials);
+    public static ARItem infusedColax = new ARItem("InfusedColax", 64, CreativeTabs.tabMaterials);
+    public static ARItem heatedInfusedColax = new ARItem("HeatedInfuedColax", 64, CreativeTabs.tabMaterials);
+
+    public static ARItem lascriteMix = new ARItem("LascriteMix", 64, CreativeTabs.tabMaterials);
+
+
 
     public static void init() {
 
@@ -60,6 +78,9 @@ public class ARItems {
         GameRegistry.registerItem(cloriteBoots, "CloriteBoots");
 
         GameRegistry.registerItem(insonum, "Insonum");
+        GameRegistry.registerItem(redocoleMix, "RedocoleMix");
+        GameRegistry.registerItem(redocolePlate, "RedocolePlate");
+        GameRegistry.registerItem(redocoleIngot, "RedocoleIngot");
 
     }
 

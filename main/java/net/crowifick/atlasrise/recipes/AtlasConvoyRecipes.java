@@ -32,6 +32,9 @@ public class AtlasConvoyRecipes {
     private AtlasConvoyRecipes(){
 
         addAtlasConvoyRecipe(ARItems.cloriteIngot, new ItemStack(ARItems.cloritePlate, 1), 1.0F);
+        addAtlasConvoyRecipe(ARItems.redocoleMix, new ItemStack(ARItems.redocolePlate, 1), 1.2F);
+        addAtlasConvoyRecipe(ARItems.redocolePlate, new ItemStack(ARItems.redocoleIngot, 1), 1.3F);
+        addAtlasConvoyRecipe(ARItems.redocoleIngot, new ItemStack(ARItems.redocolePlate, 1), 1.0F);
 
     }
 

@@ -37,6 +37,7 @@ public class AROreGen implements IWorldGenerator {
     private void generateSurface(World world, Random random, int x, int z) {
 
         OreGeneration.addOreSpawn(ARBlocks.cloriteOre, world, random, x, z, 16, 16, 5, 9, 14, 30);
+        OreGeneration.addOreSpawn(ARBlocks.insonumOre, world, random, x, z, 16, 16, 4, 7, 5, 20);
 
     }
     private void generateNether(World world, Random random, int x, int z) {
