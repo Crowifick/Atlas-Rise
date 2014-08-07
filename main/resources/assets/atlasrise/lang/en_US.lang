@@ -23,3 +23,12 @@ container.atlasconvoy=Atlas Convoy
 tile.InsonumOre.name=Insonum Ore
 tile.InsonumBlock.name=Insonum Block
 item.Insonum.name=Insonum
+
+item.IanOrb.name=Ian Orb
+
+item.ColaxMix.name=Colax Mis
+item.colax.name=Colax
+item.infusedColax.name=Infused Colax
+item.heatedInfusedColax.name=Heated Infused Colax
+
+item.lascriteMix.name=Lascrite Mix

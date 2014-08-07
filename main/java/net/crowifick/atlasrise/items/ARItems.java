@@ -47,7 +47,8 @@ public class ARItems {
     public static ARItem redocoleIngot = new ARItem("RedocoleIngot", 64, CreativeTabs.tabMaterials);
     //TODO add redocole Armor and tools
 
-    public static ARItem IanOrb = new ARItem("IanOrb", 64, CreativeTabs.tabMaterials);
+    public static ARItem ianOrb = new ARItem("IanOrb", 64, CreativeTabs.tabMaterials);
+    public static ARItem staggeredRock = new ARItem("StaggeredRock", 64, CreativeTabs.tabMaterials);
 
     public static ARItem colaxMix = new ARItem("ColaxMix", 64, CreativeTabs.tabMaterials);
     public static ARItem colax = new ARItem("Colax", 64, CreativeTabs.tabMaterials);
@@ -81,6 +82,16 @@ public class ARItems {
         GameRegistry.registerItem(redocoleMix, "RedocoleMix");
         GameRegistry.registerItem(redocolePlate, "RedocolePlate");
         GameRegistry.registerItem(redocoleIngot, "RedocoleIngot");
+
+        GameRegistry.registerItem(ianOrb, "IanOrb");
+        GameRegistry.registerItem(staggeredRock, "StaggeredRock");
+
+        GameRegistry.registerItem(colaxMix, "ColaxMix");
+        GameRegistry.registerItem(colax, "Colax");
+        GameRegistry.registerItem(infusedColax, "InfusedColax");
+        GameRegistry.registerItem(heatedInfusedColax, "HeatedInfusedColax");
+
+        GameRegistry.registerItem(lascriteMix, "LascriteMix");
 
     }
 
