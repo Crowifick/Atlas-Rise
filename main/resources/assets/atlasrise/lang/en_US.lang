@@ -23,12 +23,16 @@ container.atlasconvoy=Atlas Convoy
 tile.InsonumOre.name=Insonum Ore
 tile.InsonumBlock.name=Insonum Block
 item.Insonum.name=Insonum
+item.RedocoleMix.name=Redocole Mix
+item.RedocolePlate.name=Redocole Plate
+item.RedocoleIngot.name=Redocole Ingot
 
 item.IanOrb.name=Ian Orb
+item.StaggeredRock.name=Staggered Rock
 
 item.ColaxMix.name=Colax Mis
-item.colax.name=Colax
-item.infusedColax.name=Infused Colax
-item.heatedInfusedColax.name=Heated Infused Colax
+item.Colax.name=Colax
+item.InfusedColax.name=Infused Colax
+item.HeatedInfusedColax.name=Heated Infused Colax
 
-item.lascriteMix.name=Lascrite Mix
+item.LascriteMix.name=Lascrite Mix
