@@ -33,6 +33,15 @@ public class ARRecipes {
         GameRegistry.addShapedRecipe(new ItemStack(ARBlocks.cloriteBlock, 1), "CCC", "CCC", "CCC", 'C', ARItems.cloriteIngot);
         GameRegistry.addShapelessRecipe(new ItemStack(ARItems.cloriteIngot, 9), ARBlocks.cloriteBlock);
 
+        GameRegistry.addShapedRecipe(new ItemStack(ARBlocks.insonumBlock, 1), "III", "III", "III", 'I', ARItems.insonum);
+        GameRegistry.addShapelessRecipe(new ItemStack(ARItems.insonum, 9), ARBlocks.insonumBlock);
+
+        GameRegistry.addShapedRecipe(new ItemStack(ARBlocks.ghesumBlock, 1), "GG", "GG", 'G', ARItems.ghesumDust);
+        GameRegistry.addShapelessRecipe(new ItemStack(ARItems.ghesumDust, 4), ARBlocks.ghesumBlock);
+
+        RecipeHelper.addDust(ARItems.redocoleMix, ARItems.insonum, ARItems.ghesumDust);
+
+
 
     }
 
@@ -44,11 +53,11 @@ public class ARRecipes {
 
     private static void toolRecipes() {
 
-        recipeHelper.pickaxe(new ItemStack(ARItems.cloritePickaxeHead, 1), ARItems.cloriteIngot);
-        recipeHelper.sword(new ItemStack(ARItems.cloriteSwordHead, 1), ARItems.cloriteIngot);
-        recipeHelper.axe(new ItemStack(ARItems.cloriteAxeHead, 1), ARItems.cloriteIngot);
-        recipeHelper.shovel(new ItemStack(ARItems.cloriteShovelHead, 1), ARItems.cloriteIngot);
-        recipeHelper.hoe(new ItemStack(ARItems.cloriteHoeHead, 1), ARItems.cloriteIngot);
+        recipeHelper.pickaxe(ARItems.cloritePickaxeHead, ARItems.cloriteIngot);
+        recipeHelper.sword(ARItems.cloriteSwordHead, ARItems.cloriteIngot);
+        recipeHelper.axe(ARItems.cloriteAxeHead, ARItems.cloriteIngot);
+        recipeHelper.shovel(ARItems.cloriteShovelHead, ARItems.cloriteIngot);
+        recipeHelper.hoe(ARItems.cloriteHoeHead, ARItems.cloriteIngot);
 
         GameRegistry.addShapedRecipe(new ItemStack(ARItems.cloritePickaxe, 1), "C", "I", 'C', ARItems.cloritePickaxeHead, 'I', Items.stick);
         GameRegistry.addShapedRecipe(new ItemStack(ARItems.cloriteSword, 1), "C", "I", 'C', ARItems.cloriteSwordHead, 'I', Items.stick);

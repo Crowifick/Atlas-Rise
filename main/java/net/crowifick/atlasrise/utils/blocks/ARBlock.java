@@ -86,15 +86,21 @@ public class ARBlock extends Block {
 
         if (this.equals(ARBlocks.insonumOre))
             return 1 + random.nextInt(2);
+        if (this.equals(ARBlocks.ghesumOre))
+            return 2 + random.nextInt(3);
 
         return 1;
 
     }
 
-    public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
+    public Item getItemDropped(int par1, Random random, int par3) {
+
+        int rng = random.nextInt(1);
 
         if (this.equals(ARBlocks.insonumOre))
             return ARItems.insonum;
+        if (this.equals(ARBlocks.ghesumOre))
+            return ARItems.ghesumDust;
 
         return Item.getItemFromBlock(this);
 

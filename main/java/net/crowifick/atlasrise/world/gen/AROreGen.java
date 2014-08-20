@@ -42,7 +42,7 @@ public class AROreGen implements IWorldGenerator {
     }
     private void generateNether(World world, Random random, int x, int z) {
 
-
+        OreGeneration.addOreNetherSpawn(ARBlocks.ghesumOre, world, random, x, z, 16, 16, 5, 20, 0, 255);
 
     }
 

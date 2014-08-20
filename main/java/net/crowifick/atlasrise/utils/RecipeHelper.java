@@ -17,33 +17,39 @@ public class RecipeHelper {
      * This class helps make the tool heads and such.
      */
 
-    public static void pickaxe(ItemStack itemStack, Item item) {
+    public static void pickaxe(Item item, Item item2) {
 
-        GameRegistry.addShapedRecipe(itemStack, "CCC", "C C", 'C', item);
-
-    }
-
-    public static void sword(ItemStack itemStack, Item item) {
-
-        GameRegistry.addShapedRecipe(itemStack, "C", "C", "C", 'C', item);
+        GameRegistry.addShapedRecipe(new ItemStack(item, 1), "CCC", "C C", 'C', item2);
 
     }
 
-    public static void axe(ItemStack itemStack, Item item) {
+    public static void sword(Item item, Item item2) {
 
-        GameRegistry.addShapedRecipe(itemStack,  "CCC", "CC ", 'C', item);
-
-    }
-
-    public static void shovel(ItemStack itemStack, Item item) {
-
-        GameRegistry.addShapedRecipe(itemStack, "CCC", "CCC", "C C", 'C', item);
+        GameRegistry.addShapedRecipe(new ItemStack(item, 1), "C", "C", "C", 'C', item2);
 
     }
 
-    public static void hoe(ItemStack itemStack, Item item) {
+    public static void axe(Item item, Item item2) {
 
-        GameRegistry.addShapedRecipe(itemStack, "CCC", "  C", 'C', item);
+        GameRegistry.addShapedRecipe(new ItemStack(item, 1),  "CCC", "CC ", 'C', item2);
+
+    }
+
+    public static void shovel(Item item, Item item2) {
+
+        GameRegistry.addShapedRecipe(new ItemStack(item, 1), "CCC", "CCC", "C C", 'C', item2);
+
+    }
+
+    public static void hoe(Item item, Item item2) {
+
+        GameRegistry.addShapedRecipe(new ItemStack(item, 1), "CCC", "  C", 'C', item2);
+
+    }
+
+    public static void addDust(Item item, Item item2, Item item3) {
+
+        GameRegistry.addShapelessRecipe(new ItemStack(item, 1), item2, item3);
 
     }
 

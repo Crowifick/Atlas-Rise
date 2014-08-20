@@ -23,6 +23,11 @@ container.atlasconvoy=Atlas Convoy
 tile.InsonumOre.name=Insonum Ore
 tile.InsonumBlock.name=Insonum Block
 item.Insonum.name=Insonum
+
+tile.GhesumOre.name=Ghesum Ore
+tile.GhesumBlock.name=Ghesum Block
+item.GhesumDust.name=Ghesum Dust
+
 item.RedocoleMix.name=Redocole Mix
 item.RedocolePlate.name=Redocole Plate
 item.RedocoleIngot.name=Redocole Ingot

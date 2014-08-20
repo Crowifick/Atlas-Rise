@@ -9,6 +9,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import net.crowifick.atlasrise.blocks.ARBlocks;
 import net.crowifick.atlasrise.client.utils.GuiHandler;
 import net.crowifick.atlasrise.entitys.AREntitys;
+import net.crowifick.atlasrise.inventory.creativetabs.ARCreativeTabs;
 import net.crowifick.atlasrise.items.ARItems;
 import net.crowifick.atlasrise.proxys.CommonProxy;
 import net.crowifick.atlasrise.recipes.ARRecipes;
@@ -39,6 +40,8 @@ public class AtlasRise {
         AREntitys.init();
         ARRecipes.init();
         ARWorlds.init();
+
+        new ARCreativeTabs();
 
         NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 

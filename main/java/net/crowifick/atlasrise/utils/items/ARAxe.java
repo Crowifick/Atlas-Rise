@@ -1,7 +1,7 @@
 package net.crowifick.atlasrise.utils.items;
 
+import net.crowifick.atlasrise.inventory.creativetabs.ARCreativeTabs;
 import net.crowifick.atlasrise.utils.Reference;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemAxe;
 
 /**
@@ -18,7 +18,7 @@ public class ARAxe extends ItemAxe {
         super(toolMaterial1);
         setUnlocalizedName(name);
         setTextureName(Reference.MODID + ":" + name);
-        setCreativeTab(CreativeTabs.tabTools);
+        setCreativeTab(ARCreativeTabs.arTools);
 
     }
 

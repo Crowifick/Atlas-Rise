@@ -2,9 +2,9 @@ package net.crowifick.atlasrise.items;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.crowifick.atlasrise.inventory.creativetabs.ARCreativeTabs;
 import net.crowifick.atlasrise.utils.Reference;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
@@ -24,7 +24,7 @@ public class ArmorClorite extends ItemArmor {
 
         super(material, armorType, renderIndex);
         setUnlocalizedName(name);
-        setCreativeTab(CreativeTabs.tabCombat);
+        setCreativeTab(ARCreativeTabs.arArmor);
         iconNames = name;
 
     }
